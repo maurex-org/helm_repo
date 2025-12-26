@@ -3,7 +3,7 @@ entries:
   mosquitto:
   - apiVersion: v2
     appVersion: 2.0.22
-    created: "2025-12-26T20:19:48.295185397-03:00"
+    created: "2025-12-26T20:22:19.729108097-03:00"
     description: MQTT Broker Helm Chart
     digest: 5a763c15daf9448eba027b006031712895cced8522bd88a364a03eaebecc5ce0
     name: mosquitto
@@ -14,12 +14,12 @@ entries:
   nginx:
   - apiVersion: v2
     appVersion: 1.29.4
-    created: "2025-12-26T20:19:48.297089667-03:00"
-    description: A Helm chart for Kubernetes
+    created: "2025-12-26T20:22:19.730997571-03:00"
+    description: NGINX Helm Chart
     digest: 9ed81d993a2c4b8adc0d5df49072cc3384632073616482c9a20b1189763292ba
     name: nginx
     type: application
     urls:
     - https://maurex-org.github.io/helm_repo/charts/nginx-0.1.0.tgz
     version: 0.1.0
-generated: "2025-12-26T20:19:48.29276645-03:00"
+generated: "2025-12-26T20:22:19.726382542-03:00"
