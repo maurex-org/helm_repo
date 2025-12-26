@@ -146,7 +146,7 @@ ingress:
   annotations: {}
   # -- Ingress rules configuration
   hosts:
-    - host: mosquitto.local
+    - host: iot
       paths:
         - path: /mqtt
           pathType: Prefix
