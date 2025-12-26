@@ -139,7 +139,7 @@ hostPorts:
 # Only needed for WebSocket connections (HTTP-based MQTT)
 ingress:
   # -- Enable ingress for WebSocket port
-  enabled: false
+  enabled: true
   # -- Ingress class name
   className: ""
   # -- Additional ingress annotations
