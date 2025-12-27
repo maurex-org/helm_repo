@@ -6,7 +6,7 @@ image:
   pullPolicy: IfNotPresent
 
 persistence:
-  hostPath: /home/maurex/homeassistant
+  hostPath: /mnt/homeassistant
   size: 5Gi
 
 usbDevice:
