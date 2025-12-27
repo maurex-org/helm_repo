@@ -3,8 +3,8 @@ kind: PersistentVolume
 metadata:
   name: {{ include "homeassistant.fullname" . }}-pv
 spec:
-  # Al dejarlo vacío, evitamos que local-path intente gestionarlo
-  storageClassName: "" 
+  # El valor "" (vacío) es crucial para ignorar la StorageClass local-path
+  storageClassName: ""
   capacity:
     storage: {{ .Values.persistence.size }}
   accessModes:
@@ -18,11 +18,12 @@ kind: PersistentVolumeClaim
 metadata:
   name: {{ include "homeassistant.fullname" . }}-pvc
 spec:
-  # Debe ser exactamente igual (vacío) para que se vinculen
+  # Debe ser idéntico al del PV para que se vinculen
   storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: {{ .Values.persistence.size }}
+  # Referencia directa al volumen que creamos arriba
   volumeName: {{ include "homeassistant.fullname" . }}-pv
