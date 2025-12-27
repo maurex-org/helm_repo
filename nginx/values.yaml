@@ -67,7 +67,7 @@ ingress:
   hosts:
     - host: iot
       paths:
-        - path: /nginx
+        - path: /
           pathType: Prefix
   tls: []
     # - secretName: chart-example-tls
