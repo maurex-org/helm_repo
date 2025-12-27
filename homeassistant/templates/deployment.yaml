@@ -26,6 +26,9 @@ spec:
               readOnly: true
             - name: usb
               mountPath: {{ .Values.usbDevice.hostPath }}
+            - name: dbus
+              mountPath: /run/dbus
+              readOnly: true
           # Mapeo de dispositivos
           resources: {}
       volumes:
@@ -39,3 +42,7 @@ spec:
         - name: usb
           hostPath:
             path: {{ .Values.usbDevice.hostPath }}
+        - name: dbus
+          hostPath:
+            path: /run/dbus
+            type: Directory

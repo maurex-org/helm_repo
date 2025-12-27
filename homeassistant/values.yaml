@@ -18,7 +18,7 @@ service:
 
 ingress:
   enabled: true
-  className: "trefik" # Cambia esto según tu Ingress Controller (traefik, nginx, etc.)
+  className: "traefik" # Cambia esto según tu Ingress Controller (traefik, nginx, etc.)
   annotations:
     kubernetes.io/ingress.class: traefik
     # cert-manager.io/cluster-issuer: "letsencrypt-prod" # Si usas SSL
