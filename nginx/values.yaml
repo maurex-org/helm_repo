@@ -62,13 +62,16 @@ ingress:
   className: "traefik"
   annotations:
     # kubernetes.io/ingress.class: nginx
-    kubernetes.io/ingress.class: traefix
+    kubernetes.io/ingress.class: traefik
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: iot
       paths:
         - path: /
           pathType: Prefix
+          service:
+            - name: nginx
+              port: 80
   tls: []
     # - secretName: chart-example-tls
     #   hosts:
