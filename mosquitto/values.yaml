@@ -99,7 +99,7 @@ service:
     # MQTT over WebSocket port
     websocket:
       # -- Enable MQTT over WebSocket port
-      enabled: false
+      enabled: true
       # -- MQTT over WebSocket port number
       port: 9001
       # -- Target port in the pod
@@ -141,7 +141,7 @@ ingress:
   # -- Enable ingress for WebSocket port
   enabled: true
   # -- Ingress class name
-  className: ""
+  className: "traefik"
   # -- Additional ingress annotations
   annotations: {}
   # -- Ingress rules configuration
