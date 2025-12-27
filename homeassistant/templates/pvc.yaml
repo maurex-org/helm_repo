@@ -3,7 +3,7 @@ kind: PersistentVolume
 metadata:
   name: homeassistant-pv
 spec:
-  storageClassName: local-path
+  storageClassName: homeassistant-local
   capacity:
     storage: {{ .Values.persistence.size }}
   accessModes:
@@ -18,7 +18,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: homeassistant-pvc
 spec:
-  storageClassName: local-path
+  storageClassName: homeassistant-local
   accessModes:
     - ReadWriteOnce
   resources:
