@@ -3,6 +3,7 @@ kind: PersistentVolume
 metadata:
   name: {{ include "homeassistant.fullname" . }}-pv
 spec:
+  storageClassName: manual # Clase manual para evitar buscadores automáticos
   capacity:
     storage: {{ .Values.persistence.size }}
   accessModes:
@@ -15,9 +16,11 @@ kind: PersistentVolumeClaim
 metadata:
   name: {{ include "homeassistant.fullname" . }}-pvc
 spec:
+  storageClassName: manual # Debe coincidir con el PV
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: {{ .Values.persistence.size }}
+  # Forzamos a que busque este PV específico por nombre
   volumeName: {{ include "homeassistant.fullname" . }}-pv
