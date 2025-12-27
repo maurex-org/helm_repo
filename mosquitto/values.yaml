@@ -148,7 +148,7 @@ ingress:
   hosts:
     - host: iot
       paths:
-        - path: /
+        - path: /mqtt
           pathType: Prefix
           service:
             name: websocket  # Only websocket port is HTTP-compatible
