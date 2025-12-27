@@ -1,0 +1,29 @@
+replicaCount: 1
+
+image:
+  repository: homeassistant/home-assistant
+  tag: "2025.10"
+  pullPolicy: IfNotPresent
+
+persistence:
+  hostPath: /home/maurex/homeassistant
+  size: 5Gi
+
+usbDevice:
+  hostPath: /dev/ttyUSB0
+
+service:
+  type: ClusterIP
+  port: 8123
+
+ingress:
+  enabled: true
+  className: "nginx" # Cambia esto según tu Ingress Controller (traefik, nginx, etc.)
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    # cert-manager.io/cluster-issuer: "letsencrypt-prod" # Si usas SSL
+  hosts:
+    - host: homeassistant.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
