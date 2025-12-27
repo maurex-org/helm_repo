@@ -69,9 +69,6 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
-          service:
-            - name: nginx
-              port: 80
   tls: []
     # - secretName: chart-example-tls
     #   hosts:
