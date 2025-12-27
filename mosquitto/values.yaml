@@ -151,7 +151,9 @@ ingress:
         - path: /
           pathType: Prefix
           service:
-            name: mqtt  # Only websocket port is HTTP-compatible
+            name: websocket
+            port: 9001
+    # Only websocket port is HTTP-compatible
   # -- TLS configuration for ingress
   tls: []
 
