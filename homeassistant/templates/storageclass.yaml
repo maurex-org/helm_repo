@@ -3,5 +3,5 @@ kind: StorageClass
 metadata:
   name: homeassistant-local
 provisioner: kubernetes.io/no-provisioner
-volumeBindingMode: Immediate  # <-- ESTO ROMPE EL BLOQUEO: vincula sin esperar al Pod
+volumeBindingMode: Immediate
 reclaimPolicy: Retain
