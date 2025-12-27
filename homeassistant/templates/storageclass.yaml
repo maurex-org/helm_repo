@@ -1,0 +1,7 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: {{ include "homeassistant.fullname" . }}-local-storage
+provisioner: kubernetes.io/no-provisioner # Indica que nosotros daremos el PV manualmente
+volumeBindingMode: Immediate # Fuerza la unión instantánea
+reclaimPolicy: Retain
