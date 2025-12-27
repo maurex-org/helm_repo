@@ -218,3 +218,8 @@ entries:
     - https://maurex-org.github.io/helm_repo/charts/nginx-0.1.0.tgz
     version: 0.1.0
 generated: "2025-12-27T09:02:46.107463926-03:00"
+
+git add . 
+git commit -m "add homeassistant"
+git push
+helm repo update
