@@ -3,8 +3,8 @@ kind: PersistentVolume
 metadata:
   name: {{ include "homeassistant.fullname" . }}-pv
 spec:
-  # Cambiamos esto para que coincida con lo que el clúster espera
-  storageClassName: local-path 
+  # Crucial: Debe coincidir con el valor que K3s inyecta en el PVC
+  storageClassName: local-path
   capacity:
     storage: {{ .Values.persistence.size }}
   accessModes:
@@ -12,17 +12,18 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: {{ .Values.persistence.hostPath }}
+    type: DirectoryOrCreate
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: {{ include "homeassistant.fullname" . }}-pvc
 spec:
-  # Ahora ambos coinciden perfectamente
+  # Especificamos la clase explícitamente para evitar ambigüedades
   storageClassName: local-path
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: {{ .Values.persistence.size }}
-  volumeName: {{ include "homeassistant.fullname" . }}-pv
+  # Eliminamos volumeName para que el selector de StorageClass trabaje libremente
