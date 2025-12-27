@@ -3,7 +3,8 @@ kind: PersistentVolume
 metadata:
   name: {{ include "homeassistant.fullname" . }}-pv
 spec:
-  storageClassName: "" # Forzamos vacío
+  # Cambiamos esto para que coincida con lo que el clúster espera
+  storageClassName: local-path 
   capacity:
     storage: {{ .Values.persistence.size }}
   accessModes:
@@ -11,21 +12,14 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: {{ .Values.persistence.hostPath }}
-  nodeAffinity: # Añadimos esto para ayudar al scheduler
-    required:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: kubernetes.io/hostname
-              operator: In
-              values:
-                - raspberrypi # <--- ASEGÚRATE QUE ESTE SEA EL NOMBRE DE TU NODO
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: {{ include "homeassistant.fullname" . }}-pvc
 spec:
-  storageClassName: "" # Forzamos vacío
+  # Ahora ambos coinciden perfectamente
+  storageClassName: local-path
   accessModes:
     - ReadWriteOnce
   resources:
