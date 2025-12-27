@@ -146,9 +146,9 @@ ingress:
   annotations: {}
   # -- Ingress rules configuration
   hosts:
-    - host: iot
+    - host: mqtt
       paths:
-        - path: /mqtt
+        - path: /
           pathType: Prefix
           service:
             name: websocket  # Only websocket port is HTTP-compatible
