@@ -1,10 +1,9 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: {{ include "homeassistant.fullname" . }}-pv
+  name: homeassistant-pv # Nombre estático para asegurar match
 spec:
-  # Crucial: Debe coincidir con el valor que K3s inyecta en el PVC
-  storageClassName: local-path
+  storageClassName: "" # Esto deshabilita local-path en el PV
   capacity:
     storage: {{ .Values.persistence.size }}
   accessModes:
@@ -17,13 +16,12 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ include "homeassistant.fullname" . }}-pvc
+  name: homeassistant-pvc
 spec:
-  # Especificamos la clase explícitamente para evitar ambigüedades
-  storageClassName: local-path
+  storageClassName: "" # Esto deshabilita local-path en el PVC
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: {{ .Values.persistence.size }}
-  # Eliminamos volumeName para que el selector de StorageClass trabaje libremente
+  volumeName: homeassistant-pv # Apunta directamente al nombre del PV
